@@ -1,5 +1,6 @@
 import React from "react";
-import styled from "styled-components/native";
-import { Text } from "react-native";
+import { CompactRestaurantInfo } from "../../../component/restaurant/compact-restaurant-info.component ";
 
-export const MapCallout = ({ restaurant }) => <Text>{restaurant.name}</Text>;
+export const MapCallout = ({ restaurant }) => (
+  <CompactRestaurantInfo restaurant={restaurant} />
+);

@@ -12,7 +12,7 @@ const Map = styled(MapView)`
   width: 100%;
 `;
 
-export const MapScreen = () => {
+export const MapScreen = ({ navigation }) => {
   const { location } = useContext(LocationContext);
   const { restaurants = [] } = useContext(RestaurantContext);
   const [latDelta, setLatDelta] = useState(0); //this determine how close the zoom level is going to be on the map
@@ -42,7 +42,10 @@ export const MapScreen = () => {
                 latitude: restaurant.geometry.location.lat,
                 longitude: restaurant.geometry.location.lng,
               }}>
-              <MapView.Callout>
+              <MapView.Callout
+                onPress={() =>
+                  navigation.navigate("RestaurantDetail", { restaurant })
+                }>
                 <MapCallout restaurant={restaurant} />
               </MapView.Callout>
             </MapView.Marker>
