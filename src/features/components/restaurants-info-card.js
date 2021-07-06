@@ -1,5 +1,5 @@
 import React from "react";
-import { Text } from "react-native";
+import { Text, View } from "react-native";
 import { SvgXml } from "react-native-svg";
 
 import { Spacer } from "../../component/spacer/spacer";
@@ -16,6 +16,7 @@ import {
   Section,
   SectionEnd,
 } from "./restaurant-info-card-style";
+import { Favourite } from "../../component/favourite/favourite.components";
 
 // const Open = styled(SvgXml)`
 //   flex-direction: row;
@@ -38,13 +39,16 @@ export const RestaurantInfoCard = ({ restaurant = {} }) => {
   const ratingArray = Array.from(new Array(Math.floor(rating)));
 
   return (
-    <RestaurantCard>
-      <RestaurantCardCover
-        key={name}
-        source={{
-          uri: photos[0],
-        }}
-      />
+    <RestaurantCard elevation={5}>
+      <View>
+        <Favourite restaurant={restaurant} />
+        <RestaurantCardCover
+          key={name}
+          source={{
+            uri: photos[0],
+          }}
+        />
+      </View>
       <Info>
         <Title variant="label">{name}</Title>
         <Section>
