@@ -5,10 +5,12 @@ import { ActivityIndicator, Colors } from "react-native-paper";
 
 import { SafeArea } from "../../component/utils/safe-area";
 import { Spacer } from "../../component/spacer/spacer";
+import { FavouritesContext } from "../../services/favourites/favourites.context";
 import { RestaurantInfoCard } from "../components/restaurants-info-card";
 import { RestaurantContext } from "../../services/restaurants/restaurants.context";
 import { Search } from "../components/search.components";
 import { FavouritesBar } from "../../component/favourite/favourites-bar.components";
+
 const RestaurantList = styled(FlatList).attrs({
   contentContainerStyle: {
     padding: 16,
@@ -32,6 +34,7 @@ const LoadingContainer = styled.View`
 
 export const RestaurantScreen = ({ navigation }) => {
   const { isLoading, restaurants } = useContext(RestaurantContext);
+  const { favourites } = useContext(FavouritesContext);
   const [isToggled, setIsToggled] = useState(false);
 
   return (
@@ -45,7 +48,12 @@ export const RestaurantScreen = ({ navigation }) => {
         isFavouritesToggled={isToggled}
         onFavouriteToggle={() => setIsToggled(!isToggled)}
       />
-      {isToggled && <FavouritesBar />}
+      {isToggled && (
+        <FavouritesBar
+          favourites={favourites}
+          onNavigate={navigation.navigate}
+        />
+      )}
       <RestaurantList
         data={restaurants}
         renderItem={({ item }) => {
@@ -63,9 +71,6 @@ export const RestaurantScreen = ({ navigation }) => {
         }}
         keyExtractor={(item) => item.name}
       />
-      {/* <RestaurantListContainer> */}
-
-      {/* </RestaurantListContainer> */}
     </SafeArea>
   );
 };
