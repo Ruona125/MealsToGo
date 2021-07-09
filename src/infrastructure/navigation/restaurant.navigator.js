@@ -5,12 +5,13 @@ import {
   createStackNavigator,
   TransitionPresets,
 } from "@react-navigation/stack";
+
 import { RestaurantScreen } from "../../features/screens/restaurants.screen";
 import { RestaurantDetailScreen } from "../../features/screens/restaurant-detail.screen";
 
 const RestaurantStack = createStackNavigator();
 
-export const RestaurantsNavigation = () => {
+export const RestaurantsNavigator = () => {
   return (
     <RestaurantStack.Navigator
       headerMode="none "
@@ -23,3 +24,5 @@ export const RestaurantsNavigation = () => {
     </RestaurantStack.Navigator>
   );
 };
+
+//
