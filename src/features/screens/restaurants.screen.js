@@ -10,12 +10,7 @@ import { RestaurantInfoCard } from "../components/restaurants-info-card";
 import { RestaurantContext } from "../../services/restaurants/restaurants.context";
 import { Search } from "../components/search.components";
 import { FavouritesBar } from "../../component/favourite/favourites-bar.components";
-
-const RestaurantList = styled(FlatList).attrs({
-  contentContainerStyle: {
-    padding: 16,
-  },
-})``;
+import { RestaurantList } from "../components/restaurant-list.styles";
 
 const Loading = styled(ActivityIndicator)`
   margin-left: -25px;
